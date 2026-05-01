@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="星座屋 - 专业星座运势查询网站，提供每日运势、每周运势、性格解析、星座配对等服务。白羊座、金牛座、双子座、巨蟹座等12星座完整运势分析。">
+    <meta name="keywords" content="星座运势, 星座查询, 每日运势, 星座配对, 性格分析, 十二星座, 星座日期, 白羊座, 金牛座, 双子座, 巨蟹座, 狮子座, 处女座, 天秤座, 天蝎座, 射手座, 摩羯座, 水瓶座, 双鱼座">
+    <meta name="author" content="星座屋">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://astro-house.github.io/">
+    <title>星座屋 - 专业星座运势查询 | 每日运势 | 星座配对 | 十二星座性格解析</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="sitemap" type="application/xml" href="sitemap.xml">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="stars-bg2"></div>
+    <div class="stars-bg3"></div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">✨ 星座屋 ✨</h1>
+                <p class="subtitle">探索星空奥秘，解读星座命运</p>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换深浅模式">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="hero">
+                <div class="zodiac-selector">
+                    <h2>选择你的星座</h2>
+                    <div class="zodiac-grid" id="zodiacGrid">
+                    </div>
+                </div>
+            </section>
+
+            <section class="fortune-section" id="fortuneSection" style="display: none;">
+                <div class="selected-zodiac">
+                    <span class="zodiac-emoji" id="selectedZodiacEmoji"></span>
+                    <h2 id="selectedZodiacName"></h2>
+                    <p class="zodiac-date" id="selectedZodiacDate"></p>
+                </div>
+
+                <div class="fortune-tabs">
+                    <button class="tab-btn active" data-tab="daily">今日运势</button>
+                    <button class="tab-btn" data-tab="weekly">本周运势</button>
+                    <button class="tab-btn" data-tab="personality">性格解析</button>
+                    <button class="tab-btn" data-tab="compatibility">星座配对</button>
+                </div>
+
+                <div class="fortune-content">
+                    <div class="tab-content active" id="daily">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>☀️ 今日运势</h3>
+                                <span class="lucky-time">幸运时间: <em id="luckyTime">-</em></span>
+                            </div>
+                            <div class="fortune-ratings">
+                                <div class="rating-item">
+                                    <span class="rating-label">综合</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="overallRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="overallValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">爱情</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="loveRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="loveValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">事业</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="careerRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="careerValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">财运</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="wealthRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="wealthValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">健康</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="healthRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="healthValue">-</span>
+                                </div>
+                            </div>
+                            <div class="fortune-desc">
+                                <h4>📝 今日提示</h4>
+                                <p id="dailyTip">-</p>
+                            </div>
+                            <div class="lucky-items">
+                                <div class="lucky-item"><span>幸运数字</span><em id="luckyNumber">-</em></div>
+                                <div class="lucky-item"><span>幸运颜色</span><em id="luckyColor">-</em></div>
+                                <div class="lucky-item"><span>幸运方位</span><em id="luckyDirection">-</em></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="weekly">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>🌟 本周运势</h3>
+                                <span class="period" id="weeklyPeriod">-</span>
+                            </div>
+                            <div class="weekly-content" id="weeklyContent">
+                                <div class="weekly-summary">
+                                    <p id="weeklySummary">-</p>
+                                </div>
+                                <div class="weekly-days">
+                                    <div class="day-card" id="day0"><span>周一</span><em>-</em></div>
+                                    <div class="day-card" id="day1"><span>周二</span><em>-</em></div>
+                                    <div class="day-card" id="day2"><span>周三</span><em>-</em></div>
+                                    <div class="day-card" id="day3"><span>周四</span><em>-</em></div>
+                                    <div class="day-card" id="day4"><span>周五</span><em>-</em></div>
+                                    <div class="day-card" id="day5"><span>周六</span><em>-</em></div>
+                                    <div class="day-card" id="day6"><span>周日</span><em>-</em></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="personality">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>🔮 性格解析</h3>
+                            </div>
+                            <div class="personality-content">
+                                <div class="personality-section">
+                                    <h4>✨ 基本特征</h4>
+                                    <p id="basicTraits">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>💪 优点</h4>
+                                    <p id="advantages">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>⚠️ 缺点</h4>
+                                    <p id="disadvantages">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>💝 情感表达</h4>
+                                    <p id="emotionalExpression">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>💼 职场表现</h4>
+                                    <p id="careerPerformance">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="compatibility">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>💕 星座配对</h3>
+                            </div>
+                            <div class="compatibility-selector">
+                                <p>选择配对星座：</p>
+                                <div class="mini-zodiac-grid" id="miniZodiacGrid"></div>
+                            </div>
+                            <div class="compatibility-result" id="compatibilityResult" style="display: none;">
+                                <div class="compatibility-header">
+                                    <span class="zodiac-pair" id="zodiacPair">-</span>
+                                    <span class="compatibility-score" id="compatibilityScore">-</span>
+                                </div>
+                                <div class="compatibility-analysis">
+                                    <h4>配对分析</h4>
+                                    <p id="compatibilityAnalysis">-</p>
+                                </div>
+                                <div class="compatibility-tips">
+                                    <h4>💡 相处建议</h4>
+                                    <p id="compatibilityTips">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="back-btn" id="backBtn">← 返回星座选择</button>
+            </section>
+
+            <section class="date-lookup">
+                <h2>📅 星座日期查询</h2>
+                <p class="section-desc">输入日期查找对应星座</p>
+                <div class="date-input-wrapper">
+                    <input type="date" id="dateInput" class="date-input">
+                    <button class="search-btn" id="searchBtn">查询</button>
+                </div>
+                <div class="date-result" id="dateResult" style="display: none;">
+                    <p>您的星座是：<strong id="resultZodiac"></strong></p>
+                    <button class="view-btn" id="viewBtn">查看运势 →</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于星座屋</h4>
+                    <p>专注星座运势分析，为您提供最专业的星座解读服务</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="pages/aries.html">白羊座</a></li>
+                        <li><a href="pages/taurus.html">金牛座</a></li>
+                        <li><a href="pages/gemini.html">双子座</a></li>
+                        <li><a href="pages/cancer.html">巨蟹座</a></li>
+                        <li><a href="pages/leo.html">狮子座</a></li>
+                        <li><a href="pages/virgo.html">处女座</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>更多星座</h4>
+                    <ul>
+                        <li><a href="pages/libra.html">天秤座</a></li>
+                        <li><a href="pages/scorpio.html">天蝎座</a></li>
+                        <li><a href="pages/sagittarius.html">射手座</a></li>
+                        <li><a href="pages/capricorn.html">摩羯座</a></li>
+                        <li><a href="pages/aquarius.html">水瓶座</a></li>
+                        <li><a href="pages/pisces.html">双鱼座</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 星座屋. All rights reserved. | <a href="sitemap.xml">网站地图</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

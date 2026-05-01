@@ -1,0 +1,951 @@
+:root {
+    --primary-color: #a855f7;
+    --secondary-color: #6366f1;
+    --accent-color: #f472b6;
+    --bg-dark: #0f0f23;
+    --bg-dark-secondary: #1a1a3e;
+    --bg-light: #f8fafc;
+    --bg-light-secondary: #e2e8f0;
+    --text-dark: #e2e8f0;
+    --text-dark-secondary: #94a3b8;
+    --text-light: #1e293b;
+    --text-light-secondary: #64748b;
+    --card-dark: rgba(30, 30, 60, 0.8);
+    --card-light: rgba(255, 255, 255, 0.9);
+    --glass-dark: rgba(15, 15, 35, 0.7);
+    --glass-light: rgba(255, 255, 255, 0.7);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --radius: 16px;
+    --transition: all 0.3s ease;
+}
+
+[data-theme="light"] {
+    --bg-primary: var(--bg-light);
+    --bg-secondary: var(--bg-light-secondary);
+    --text-primary: var(--text-light);
+    --text-secondary: var(--text-light-secondary);
+    --card-bg: var(--card-light);
+    --glass-bg: var(--glass-light);
+    --nav-bg: rgba(248, 250, 252, 0.95);
+}
+
+[data-theme="dark"] {
+    --bg-primary: var(--bg-dark);
+    --bg-secondary: var(--bg-dark-secondary);
+    --text-primary: var(--text-dark);
+    --text-secondary: var(--text-dark-secondary);
+    --card-bg: var(--card-dark);
+    --glass-bg: var(--glass-dark);
+    --nav-bg: rgba(15, 15, 35, 0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: var(--transition);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.stars-bg, .stars-bg2, .stars-bg3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.stars-bg {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+
+.stars-bg2 {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 230px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 350px 200px, #fff, transparent),
+        radial-gradient(2px 2px at 420px 50px, rgba(255,255,255,0.8), transparent);
+    background-size: 500px 500px;
+    animation: twinkle 8s ease-in-out infinite;
+}
+
+.stars-bg3 {
+    background-image: 
+        radial-gradient(3px 3px at 50px 100px, rgba(168, 85, 247, 0.8), transparent),
+        radial-gradient(2px 2px at 150px 200px, rgba(99, 102, 241, 0.6), transparent),
+        radial-gradient(3px 3px at 250px 50px, rgba(244, 114, 182, 0.7), transparent),
+        radial-gradient(2px 2px at 350px 150px, rgba(168, 85, 247, 0.5), transparent),
+        radial-gradient(3px 3px at 450px 250px, rgba(99, 102, 241, 0.6), transparent);
+    background-size: 600px 400px;
+    animation: twinkle 12s ease-in-out infinite reverse;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.header {
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+}
+
+.header-content {
+    position: relative;
+    display: inline-block;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.main {
+    padding: 40px 0;
+    min-height: calc(100vh - 200px);
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.zodiac-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: var(--radius);
+    padding: 25px 15px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.zodiac-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+    border-color: var(--primary-color);
+}
+
+.zodiac-card .emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.zodiac-card .name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.zodiac-card .date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.fortune-section {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.selected-zodiac {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.selected-zodiac .zodiac-emoji {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.selected-zodiac h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.selected-zodiac .zodiac-date {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.fortune-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-color: transparent;
+}
+
+.fortune-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.fortune-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.fortune-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fortune-header h3 {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lucky-time, .period {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.fortune-ratings {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.rating-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rating-label {
+    width: 50px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.rating-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rating-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.rating-value {
+    width: 40px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.fortune-desc {
+    margin-bottom: 25px;
+}
+
+.fortune-desc h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.fortune-desc p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.lucky-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.lucky-item {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.lucky-item span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.lucky-item em {
+    font-style: normal;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.weekly-content {
+    display: block;
+}
+
+.weekly-summary {
+    background: rgba(168, 85, 247, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.weekly-summary p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.weekly-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+}
+
+.day-card span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.day-card em {
+    font-style: normal;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.personality-content {
+    display: grid;
+    gap: 20px;
+}
+
+.personality-section {
+    background: rgba(168, 85, 247, 0.05);
+    border-left: 3px solid var(--primary-color);
+    padding: 15px 20px;
+    border-radius: 0 10px 10px 0;
+}
+
+.personality-section h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.personality-section p {
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.compatibility-selector {
+    margin-bottom: 25px;
+}
+
+.compatibility-selector > p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+.mini-zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.mini-zodiac-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mini-zodiac-card:hover {
+    border-color: var(--primary-color);
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.mini-zodiac-card .emoji {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.mini-zodiac-card .name {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.compatibility-result {
+    animation: fadeIn 0.4s ease;
+}
+
+.compatibility-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.zodiac-pair {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.compatibility-score {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.compatibility-analysis, .compatibility-tips {
+    margin-bottom: 20px;
+}
+
+.compatibility-analysis h4, .compatibility-tips h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.compatibility-analysis p, .compatibility-tips p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.back-btn {
+    display: block;
+    margin: 40px auto 0;
+    padding: 12px 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.date-lookup {
+    margin-top: 60px;
+    text-align: center;
+    padding: 40px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: var(--radius);
+}
+
+.date-lookup h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.date-lookup .section-desc {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+.date-input-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.date-input {
+    padding: 12px 20px;
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.date-input:focus {
+    border-color: var(--primary-color);
+}
+
+.search-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
+}
+
+.date-result {
+    margin-top: 25px;
+    animation: fadeIn 0.4s ease;
+}
+
+.date-result p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.date-result strong {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.view-btn {
+    padding: 10px 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.footer {
+    margin-top: 60px;
+    padding: 50px 0 20px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(168, 85, 247, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-bottom a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .theme-toggle {
+        right: 0;
+        top: -10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .zodiac-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .zodiac-card {
+        padding: 15px 10px;
+    }
+
+    .zodiac-card .emoji {
+        font-size: 2.2rem;
+    }
+
+    .zodiac-card .name {
+        font-size: 0.9rem;
+    }
+
+    .selected-zodiac .zodiac-emoji {
+        font-size: 3.5rem;
+    }
+
+    .fortune-tabs {
+        gap: 8px;
+    }
+
+    .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .fortune-card {
+        padding: 20px;
+    }
+
+    .weekly-days {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .date-lookup {
+        padding: 25px 15px;
+    }
+
+    .date-input-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .date-input {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .zodiac-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fortune-tabs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tab-btn {
+        text-align: center;
+    }
+
+    .weekly-days {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lucky-items {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.breadcrumb {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.zodiac-hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.zodiac-big-emoji {
+    font-size: 6rem;
+    display: block;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.zodiac-hero h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.zodiac-info {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.zodiac-page .fortune-section {
+    animation: fadeIn 0.5s ease;
+}
+
+.other-zodiac {
+    margin-top: 60px;
+    text-align: center;
+    padding: 40px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: var(--radius);
+}
+
+.other-zodiac h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+}
+
+.zodiac-mini-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.mini-zodiac-link {
+    padding: 10px 20px;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 30px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.mini-zodiac-link:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.compatibility-list {
+    display: grid;
+    gap: 20px;
+}
+
+.compatibility-item {
+    background: rgba(168, 85, 247, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    transition: var(--transition);
+}
+
+.compatibility-item:hover {
+    border-color: var(--primary-color);
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.compatibility-item .compatibility-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.compatibility-item .zodiac-pair {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.compatibility-item .compatibility-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.compatibility-item p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.logo-link {
+    display: inline-block;
+}

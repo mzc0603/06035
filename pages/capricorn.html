@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩羯座今日运势查询 | 星座屋 - ♑摩羯座性格分析/星座配对/每周运势</title>
+    <meta name="description" content="摩羯座今日运势分析，包括爱情、事业、财运、健康各方面的运势预测。摩羯座性格特点详解，与12星座的配对指数分析。摩羯座♑守护星土星，12月22日-1月19日。">
+    <meta name="keywords" content="摩羯座运势, 摩羯座今日运势, 摩羯座性格, 摩羯座配对, 摩羯座日期, 摩羯座♑, 土星, 星座屋, 十二星座, 摩羯座本周运势, 摩羯座爱情, 摩羯座事业">
+    <meta name="author" content="星座屋">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://astro-house.github.io/pages/capricorn.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="stars-bg2"></div>
+    <div class="stars-bg3"></div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo-link" style="text-decoration: none;">
+                    <h1 class="logo">✨ 星座屋 ✨</h1>
+                </a>
+                <p class="subtitle">探索星空奥秘，解读星座命运</p>
+                <button class="theme-toggle" id="themeToggle" aria-label="切换深浅模式">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../index.html">首页</a> &gt; <span>摩羯座</span>
+            </nav>
+
+            <section class="zodiac-hero">
+                <span class="zodiac-big-emoji">🐐</span>
+                <h2>♑ 摩羯座</h2>
+                <p class="zodiac-info">12月22日 - 1月19日 | 土象星座 | 守护星：土星</p>
+            </section>
+
+            <section class="fortune-section">
+                <div class="fortune-tabs">
+                    <button class="tab-btn active" data-tab="daily">今日运势</button>
+                    <button class="tab-btn" data-tab="weekly">本周运势</button>
+                    <button class="tab-btn" data-tab="personality">性格解析</button>
+                    <button class="tab-btn" data-tab="compatibility">星座配对</button>
+                </div>
+
+                <div class="fortune-content">
+                    <div class="tab-content active" id="daily">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>☀️ 今日运势</h3>
+                                <span class="lucky-time">幸运时间: <em id="luckyTime">-</em></span>
+                            </div>
+                            <div class="fortune-ratings">
+                                <div class="rating-item">
+                                    <span class="rating-label">综合</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="overallRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="overallValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">爱情</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="loveRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="loveValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">事业</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="careerRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="careerValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">财运</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="wealthRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="wealthValue">-</span>
+                                </div>
+                                <div class="rating-item">
+                                    <span class="rating-label">健康</span>
+                                    <div class="rating-bar"><div class="rating-fill" id="healthRating" style="width: 0%"></div></div>
+                                    <span class="rating-value" id="healthValue">-</span>
+                                </div>
+                            </div>
+                            <div class="fortune-desc">
+                                <h4>📝 今日提示</h4>
+                                <p id="dailyTip">-</p>
+                            </div>
+                            <div class="lucky-items">
+                                <div class="lucky-item"><span>幸运数字</span><em id="luckyNumber">-</em></div>
+                                <div class="lucky-item"><span>幸运颜色</span><em id="luckyColor">-</em></div>
+                                <div class="lucky-item"><span>幸运方位</span><em id="luckyDirection">-</em></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="weekly">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>🌟 本周运势</h3>
+                                <span class="period" id="weeklyPeriod">-</span>
+                            </div>
+                            <div class="weekly-content">
+                                <div class="weekly-summary">
+                                    <p id="weeklySummary">-</p>
+                                </div>
+                                <div class="weekly-days">
+                                    <div class="day-card" id="day0"><span>周一</span><em>-</em></div>
+                                    <div class="day-card" id="day1"><span>周二</span><em>-</em></div>
+                                    <div class="day-card" id="day2"><span>周三</span><em>-</em></div>
+                                    <div class="day-card" id="day3"><span>周四</span><em>-</em></div>
+                                    <div class="day-card" id="day4"><span>周五</span><em>-</em></div>
+                                    <div class="day-card" id="day5"><span>周六</span><em>-</em></div>
+                                    <div class="day-card" id="day6"><span>周日</span><em>-</em></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="personality">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>🔮 性格解析</h3>
+                            </div>
+                            <div class="personality-content">
+                                <div class="personality-section">
+                                    <h4>✨ 基本特征</h4>
+                                    <p id="basicTraits">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>💪 优点</h4>
+                                    <p id="advantages">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>⚠️ 缺点</h4>
+                                    <p id="disadvantages">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>💝 情感表达</h4>
+                                    <p id="emotionalExpression">-</p>
+                                </div>
+                                <div class="personality-section">
+                                    <h4>💼 职场表现</h4>
+                                    <p id="careerPerformance">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="compatibility">
+                        <div class="fortune-card">
+                            <div class="fortune-header">
+                                <h3>💕 星座配对</h3>
+                            </div>
+                            <div class="compatibility-list">
+                                <div class="compatibility-item" data-zodiac="taurus">
+                                    <div class="compatibility-header">
+                                        <span class="zodiac-pair">♉ 金牛座</span>
+                                        <span class="compatibility-score">93%</span>
+                                    </div>
+                                    <p>土象星座的完美搭配，你们都注重实际和稳定，在一起时会感到非常踏实。</p>
+                                </div>
+                                <div class="compatibility-item" data-zodiac="virgo">
+                                    <div class="compatibility-header">
+                                        <span class="zodiac-pair">♍ 处女座</span>
+                                        <span class="compatibility-score">93%</span>
+                                    </div>
+                                    <p>两个土象星座的结合，稳定而务实。你们都重视责任和承诺。</p>
+                                </div>
+                                <div class="compatibility-item" data-zodiac="scorpio">
+                                    <div class="compatibility-header">
+                                        <span class="zodiac-pair">♏ 天蝎座</span>
+                                        <span class="compatibility-score">88%</span>
+                                    </div>
+                                    <p>摩羯和天蝎都是深沉而专注的星座，你们能够互相理解对方的野心和追求。</p>
+                                </div>
+                                <div class="compatibility-item" data-zodiac="pisces">
+                                    <div class="compatibility-header">
+                                        <span class="zodiac-pair">♓ 双鱼座</span>
+                                        <span class="compatibility-score">85%</span>
+                                    </div>
+                                    <p>摩羯的现实和双鱼的梦幻可以互补。摩羯能够帮助双鱼实现理想。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="other-zodiac">
+                <h3>探索其他星座</h3>
+                <div class="zodiac-mini-grid">
+                    <a href="aries.html" class="mini-zodiac-link">♈ 白羊座</a>
+                    <a href="taurus.html" class="mini-zodiac-link">♉ 金牛座</a>
+                    <a href="gemini.html" class="mini-zodiac-link">♊ 双子座</a>
+                    <a href="cancer.html" class="mini-zodiac-link">♋ 巨蟹座</a>
+                    <a href="leo.html" class="mini-zodiac-link">♌ 狮子座</a>
+                    <a href="virgo.html" class="mini-zodiac-link">♍ 处女座</a>
+                    <a href="libra.html" class="mini-zodiac-link">♎ 天秤座</a>
+                    <a href="scorpio.html" class="mini-zodiac-link">♏ 天蝎座</a>
+                    <a href="sagittarius.html" class="mini-zodiac-link">♐ 射手座</a>
+                    <a href="aquarius.html" class="mini-zodiac-link">♒ 水瓶座</a>
+                    <a href="pisces.html" class="mini-zodiac-link">♓ 双鱼座</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 星座屋. All rights reserved. | <a href="../sitemap.xml">网站地图</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/zodiac-page.js"></script>
+</body>
+</html>
